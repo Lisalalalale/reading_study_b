@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lorem Ipsum Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        text-align: center;
+        padding: 1rem;
+      }
+      p {
+        width: 80%;
+        margin: 0 auto;
+        padding: 1rem;
+        text-align: justify;
+        font-size: 16px;
+      }
+      @media (max-width: 700px) {
+        p {
+          width: 90%;
+        }
+      }
+      #text-size-form {
+        text-align: center;
+        padding: 1rem;
+      }
+      #text-size-input {
+        width: 60px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Lorem Ipsum</h1>
+    <form id="text-size-form">
+      <label for="text-size-input">Text Size:</label>
+      <input type="number" id="text-size-input" value="16">
+      <button id="text-size-button">Submit</button>
+    </form>
+    <p id="lorem-ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at justo accumsan, semper dolor eget, vestibulum mauris. Aliquam erat volutpat. In ut congue lacus. Fusce iaculis bibendum facilisis. Nullam ut suscipit nisi. Nullam viverra blandit dolor, vitae suscipit orci tempor id. Sed id orci viverra, aliquam mi non, congue mauris. Integer eget aliquam orci. Sed congue magna at dolor hendrerit, a tincidunt nunc mollis. Quisque tincidunt, dui vel pellentesque rutrum, sapien sapien tristique justo, vel tempor velit velit vel est.</p>
+    <script>
+      const textSizeButton = document.getElementById("text-size-button");
+      const textSizeInput = document.getElementById("text-size-input");
+      const loremIpsum = document.getElementById("lorem-ipsum");
+      
+      textSizeButton.addEventListener("click", function(event) {
+        event.preventDefault();
+        loremIpsum.style.fontSize = textSizeInput.value + "px";
+      });
+    </script>
+  </body>
+</html>

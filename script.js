@@ -39,8 +39,8 @@ function disableAll() {
   elements.forEach((element) => {
     element.remove()
   })
-  testText();
-  //displayText();
+  //testText();
+  displayText();
   //starts the timer
     const timer = document.createElement("p");
     timer.id="timer";

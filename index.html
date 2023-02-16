@@ -63,7 +63,7 @@
       <input type="range" id="color-slider" min="200" max="255" value="255">
     </form>
     <p id="lorem-ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at justo accumsan, semper dolor eget, vestibulum mauris. Aliquam erat volutpat. In ut congue lacus. Fusce iaculis bibendum facilisis. Nullam ut suscipit nisi. Nullam viverra blandit dolor, vitae suscipit orci tempor id. Sed id orci viverra, aliquam mi non, congue mauris. Integer eget aliquam orci. Sed congue magna at dolor hendrerit, a tincidunt nunc mollis. Quisque tincidunt, dui vel pellentesque rutrum, sapien sapien tristique justo, vel tempor velit velit vel est.</p>
-    <p id="info-text"> Wenn du den Button klickst, siehst du den ersten Text und die Zeit wird gemessen. </p>
+    <p id="info-text"> Wenn du den Button klickst, siehst du den Text und die Zeit wird gemessen. </p>
     <button id="text-toggle-button">Los gehts!</button>
     <script>
       const textSizeInput = document.getElementById("text-size-input");
@@ -72,7 +72,7 @@
       const infotext = document.getElementById("info-text")
       const textToggleButton = document.getElementById("text-toggle-button");
 
-      let textEnabled = true;
+      
 
       textSizeInput.addEventListener("input", function(event) {
         loremIpsum.style.fontSize = textSizeInput.value + "px";
@@ -86,17 +86,32 @@
         document.body.style.backgroundColor = backgroundColor;
       });
 
-      textToggleButton.addEventListener("click", function(event) {
-        event.preventDefault();
-        if (textEnabled) {
-          loremIpsum.style.display = "none";
-          textToggleButton.textContent = "Enable Text";
-        } else {
-          loremIpsum.style.display = "block";
-          textToggleButton.textContent = "Disable Text";
-        }
-        textEnabled = !textEnabled;
-      });
+
+      textToggleButton.addEventListener("click", disableAll);
+      const textSize = textSizeInput.value + "px";
+      function disableAll() {
+        const body = document.body;
+        const elements = document.querySelectorAll("h3, p, form, button, input")
+
+        elements.forEach((element) => {
+          element.remove()
+        })
+        fetch("text.txt")
+        .then(response => response.text())
+        .then(data => {
+          const newPara = document.createElement("p");
+          const textNode = document.createTextNode(data);
+          newPara.appendChild(textNode);
+          newPara.style.fontSize = textSize;
+          newPara.style.textAlign = "center";
+          body.appendChild(newPara);
+        })
+        .catch(error => console.error(error));
+    }
+      
+     
+      
+     
     </script>
   </body>
 </html>

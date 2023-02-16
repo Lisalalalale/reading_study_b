@@ -24,7 +24,11 @@ let textSize;
 
 
 const newButton = document.createElement("button");
-//Button stylen
+newButton.textContent = "Fertig";
+newButton.style.display = "block";
+newButton.style.margin = "0 auto";
+newButton.style.padding = "1rem";
+newButton.style.textAlign = "center";
 newButton.addEventListener("click", stopTimer);
 
 //removes all elements, displays the text and starts the timer
@@ -36,6 +40,7 @@ function disableAll() {
     element.remove()
   })
   testText();
+  //displayText();
   //starts the timer
     const timer = document.createElement("p");
     timer.id="timer";
@@ -43,7 +48,7 @@ function disableAll() {
     body.appendChild(newButton);
     startTimer();
     
-    //displayText();
+    
 }
 function testText(){
     const newPara = document.createElement("p");

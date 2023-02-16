@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Lorem Ipsum Page</title>
+    <title>Lesestudie</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
       body {
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
+        background-color: rgb(255,255,255);
       }
-      h1 {
+      h3 {
         text-align: center;
         padding: 1rem;
       }
@@ -32,24 +33,69 @@
       #text-size-input {
         width: 60px;
       }
+      #text-toggle-button {
+      display: block;
+      margin: 0 auto;
+      padding: 1rem;
+      text-align: center;
+      }
+      #color-form {
+        direction: ltr;
+        text-align: center;
+        padding: 1 rem;
+      }
+      #color-slider {
+        display: block;
+        margin: 0 auto;
+        width: 60%;
+      }
+
     </style>
   </head>
   <body>
-    <h1>Lorem Ipsum</h1>
+    <h3>Stelle den Text so ein, dass er für dich angenehm zu lesen ist.</h3>
     <form id="text-size-form">
-      <label for="text-size-input">Text Size:</label>
+      <label for="text-size-input">Schriftgröße:</label>
       <input type="number" id="text-size-input" value="16">
-      <button id="text-size-button">Submit</button>
+    </form>
+    <form id="color-form">
+      <label for="color-slider">Helligkeit:</label>
+      <input type="range" id="color-slider" min="200" max="255" value="255">
     </form>
     <p id="lorem-ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at justo accumsan, semper dolor eget, vestibulum mauris. Aliquam erat volutpat. In ut congue lacus. Fusce iaculis bibendum facilisis. Nullam ut suscipit nisi. Nullam viverra blandit dolor, vitae suscipit orci tempor id. Sed id orci viverra, aliquam mi non, congue mauris. Integer eget aliquam orci. Sed congue magna at dolor hendrerit, a tincidunt nunc mollis. Quisque tincidunt, dui vel pellentesque rutrum, sapien sapien tristique justo, vel tempor velit velit vel est.</p>
+    <p id="info-text"> Wenn du den Button klickst, siehst du den ersten Text und die Zeit wird gemessen. </p>
+    <button id="text-toggle-button">Los gehts!</button>
     <script>
-      const textSizeButton = document.getElementById("text-size-button");
       const textSizeInput = document.getElementById("text-size-input");
       const loremIpsum = document.getElementById("lorem-ipsum");
-      
-      textSizeButton.addEventListener("click", function(event) {
-        event.preventDefault();
+      const brightnessSlider = document.getElementById("color-slider");
+      const infotext = document.getElementById("info-text")
+      const textToggleButton = document.getElementById("text-toggle-button");
+
+      let textEnabled = true;
+
+      textSizeInput.addEventListener("input", function(event) {
         loremIpsum.style.fontSize = textSizeInput.value + "px";
+        infotext.style.fontSize = textSizeInput.value + "px";
+
+      });
+      
+      brightnessSlider.addEventListener("input", function(event) {
+        const colorValue = brightnessSlider.value;
+        const backgroundColor = `rgb(${colorValue}, ${colorValue}, ${colorValue})`;
+        document.body.style.backgroundColor = backgroundColor;
+      });
+
+      textToggleButton.addEventListener("click", function(event) {
+        event.preventDefault();
+        if (textEnabled) {
+          loremIpsum.style.display = "none";
+          textToggleButton.textContent = "Enable Text";
+        } else {
+          loremIpsum.style.display = "block";
+          textToggleButton.textContent = "Disable Text";
+        }
+        textEnabled = !textEnabled;
       });
     </script>
   </body>

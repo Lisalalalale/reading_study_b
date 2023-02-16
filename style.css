@@ -1,0 +1,47 @@
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: rgb(255,255,255);
+      }
+      h3 {
+        text-align: center;
+        padding: 1rem;
+      }
+      p {
+        width: 80%;
+        margin: 0 auto;
+        padding: 1rem;
+        text-align: justify;
+        font-size: 16px;
+      }
+      @media (max-width: 700px) {
+        p {
+          width: 90%;
+        }
+      }
+      #text-size-form {
+        text-align: center;
+        padding: 1rem;
+      }
+      #text-size-input {
+        width: 60px;
+      }
+      #text-toggle-button {
+      display: block;
+      margin: 0 auto;
+      padding: 1rem;
+      text-align: center;
+      }
+      #color-form {
+        direction: ltr;
+        text-align: center;
+        padding: 1 rem;
+      }
+      #color-slider {
+        display: block;
+        margin: 0 auto;
+        width: 60%;
+      }
+
+    

@@ -88,14 +88,72 @@
 
 
       textToggleButton.addEventListener("click", disableAll);
+      const body = document.body;
       const textSize = textSizeInput.value + "px";
+      displayText();
+      
+      const newButton = document.createElement("button");
+      //Button stylen
+      newButton.addEventListener("click", stopTimer);
+      
+
+      
+
+
+
       function disableAll() {
-        const body = document.body;
-        const elements = document.querySelectorAll("h3, p, form, button, input")
+        
+        const elements = document.querySelectorAll("h3, p, form,button, input")
 
         elements.forEach((element) => {
           element.remove()
         })
+          const timer = document.createElement("p");
+          timer.id="timer";
+          body.appendChild(timer);
+          
+          body.appendChild(newButton);
+          startTimer();
+      }
+        let startTime, endTime, elapsedTime;
+        let timerInterval;
+
+        function startTimer() {
+          // Store the start time
+          startTime = new Date();
+
+          // Start the timer
+          timerInterval = setInterval(updateTimer, 1000);
+        }
+
+        function stopTimer() {
+          // Stop the timer
+          clearInterval(timerInterval);
+        }
+
+        function updateTimer() {
+          // Calculate the elapsed time
+          endTime = new Date();
+          elapsedTime = Math.floor((endTime - startTime) / 1000);
+
+          // Format the time as HH:MM:SS
+          const hours = Math.floor(elapsedTime / 3600);
+          const minutes = Math.floor((elapsedTime % 3600) / 60);
+          const seconds = elapsedTime % 60;
+          const formattedTime = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+
+          document.getElementById("timer").innerHTML = formattedTime;
+
+    
+        }
+
+        function pad(value) {
+          // Add leading zeros to single-digit values
+          return value < 10 ? `0${value}` : value;
+        }
+
+
+        function displayText(){
         fetch("text.txt")
         .then(response => response.text())
         .then(data => {
@@ -107,7 +165,7 @@
           body.appendChild(newPara);
         })
         .catch(error => console.error(error));
-    }
+      }
       
      
       

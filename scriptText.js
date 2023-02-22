@@ -3,27 +3,10 @@ const urlParams = new URLSearchParams(window.location.search);
 const textSize = urlParams.get('textSize');
 console.log(textSize)
 const body = document.body;
+const trainText = document.getElementById('texttrains')
 
-function testText(){
-    const newPara = document.createElement("p");
-    newPara.textContent= "Das ist total unnötig und doof";
-    newPara.style.fontSize = textSize + 'px';
-    newPara.style.textAlign = "center";
-    body.appendChild(newPara);
-}
-function displayText(){
-fetch("text.txt")
-.then(response => response.text())
-.then(data => {
-const newPara = document.createElement("p");
-const textNode = document.createTextNode(data);
-newPara.appendChild(textNode);
-newPara.style.fontSize = textSize + 'px';
-newPara.style.textAlign = "center";
-body.appendChild(newPara);
-})
-.catch(error => console.error(error));
-}
+
+
 
 //timer methods
 let startTime, endTime, elapsedTime;
@@ -63,7 +46,7 @@ function pad(value) {
 return value < 10 ? `0${value}` : value;
 }
 
-testText();
+trainText.style.fontSize = textSize + 'px';
 const timer = document.createElement("p");
 timer.id="timer";
 body.appendChild(timer);

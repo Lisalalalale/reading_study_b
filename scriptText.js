@@ -2,14 +2,12 @@
 const urlParams = new URLSearchParams(window.location.search);
 const textSize = urlParams.get('textSize');
 console.log(textSize)
-//const background = urlParams.get('background');
-//document.body.style.backgroundColor = background;
 const body = document.body;
 
 function testText(){
     const newPara = document.createElement("p");
     newPara.textContent= "Das ist total unnötig und doof";
-    newPara.style.fontSize = textSize;
+    newPara.style.fontSize = textSize + 'px';
     newPara.style.textAlign = "center";
     body.appendChild(newPara);
 }

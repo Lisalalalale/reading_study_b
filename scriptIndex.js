@@ -19,5 +19,5 @@ console.log(`textA.html?textSize= ${textSizeInput.value}`);
 
 function changeToText() {
   
-  window.location.href = `textA.html?textSize= ${textSizeInput.value}`;
+  window.location.href = `textB.html?textSize= ${textSizeInput.value}`;
 }

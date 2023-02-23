@@ -26,8 +26,9 @@ timerInterval = setInterval(updateTimer, 1000);
 function stopTimer() {
 // Stop the timer
 clearInterval(timerInterval);
-//hides the train texts
+//removes the train texts and the button
 trainText.remove();
+stopButton.remove();
 // displays the time and the text size
 timer.id="timer";
 body.appendChild(timer);

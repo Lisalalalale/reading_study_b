@@ -25,6 +25,7 @@ body {
   #stop-time-button{
     display: block;
     margin: 0 auto;
+    margin-bottom: 1rem;
     padding: 1rem;
     text-align: center;
     }

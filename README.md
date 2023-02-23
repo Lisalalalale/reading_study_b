@@ -1,2 +1,2 @@
 # reading_study
-Text A Die Geschichte des Comboio Presidencial und die Geschichte der Eisenbahn in Italien
+Text B Die Geschichte der Canadian Pacific Railway und die Geschichte der Eisenbahn in Belgien
